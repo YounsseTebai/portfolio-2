@@ -584,12 +584,9 @@ h3.my-profession {
 }
 
 .service .service-item:hover {
-    background: var(--bg-black-50);
-    box-shadow: 0 0 20px rgba(48, 46, 47, 0.15);
     transform: translateY(-10px);
     transition: all 0.3s ease;
     border-radius: 10px;
-    border: 1px solid var(--bg-black-50);
     cursor: pointer;
     color: var(--text-black-900);
 }
