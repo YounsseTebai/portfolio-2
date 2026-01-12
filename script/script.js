@@ -1,3 +1,32 @@
+// 1️⃣ تهيئة EmailJS
+(function() {
+    emailjs.init("kcaRHZen372OdmlbZ"); // ضع هنا Public Key من EmailJS
+})();
+const successMessage = document.querySelector('.success-message')
+const form = document.querySelector(".form");
+if (form) {
+    form.addEventListener("submit", function(e) {
+        e.preventDefault(); // منع إعادة تحميل الصفحة
+
+        // 3️⃣ إرسال البيانات
+        emailjs.sendForm(
+                "service_contact", // ضع هنا Service ID من EmailJS
+                "template_5zkt893", // ضع هنا Template ID من EmailJS
+                form // يشير إلى الفورم الحالي
+            ).then(() => {
+                successMessage.classList.add("show")
+                setTimeout(() => {
+                    successMessage.classList.remove("show");
+                }, 5000);
+                form.reset();
+            })
+            .catch((error) => {
+                console.error('emailJS error:', error)
+            })
+    });
+} else {
+    console.error("form not found! Make sure there is an element with class 'form' in the DOM.");
+}
 // typing animation
 var typed = new Typed(".typing", {
     strings: ["", "Web Developer", "Web Designer", "Frelancer"],
@@ -5,10 +34,6 @@ var typed = new Typed(".typing", {
     BackSpeed: 60,
     loop: true,
 });
-
-// contact
-emailjs.init("user_XXXXXXXXXXXXXX");
-emailjs.sendForm("service_contact", "template_5zkt893", document.getElementById("contact-form"));
 
 // Aside
 document.addEventListener("DOMContentLoaded", function() {
@@ -80,3 +105,5 @@ document.addEventListener("DOMContentLoaded", function() {
         if (!aside) console.warn(".aside not found in DOM");
     }
 });
+
+emailjs.sendForm("service_contact", "template_5zkt893", document.getElementById("contact-form"));
