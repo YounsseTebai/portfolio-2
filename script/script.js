@@ -6,7 +6,9 @@ var typed = new Typed(".typing", {
     loop: true,
 });
 
-
+// contact
+emailjs.init("user_XXXXXXXXXXXXXX");
+emailjs.sendForm("service_contact", "template_5zkt893", document.getElementById("contact-form"));
 
 // Aside
 document.addEventListener("DOMContentLoaded", function() {
